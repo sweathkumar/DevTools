@@ -20,8 +20,17 @@ const TOOLS = [
     category: "Data",
     tagline: "View, edit and export any CSV file",
     desc: "Sort, filter, edit cells, reorder columns, column statistics, find & replace, export to JSON.",
-    route: "csvstudio", 
+    route: "csvstudio",
     tags: ["csv", "table", "editor"],
+  },
+  {
+    id: "codestudio",
+    name: "CodeStudio",
+    category: "AI",
+    tagline: "Token counts and API costs across 31 models",
+    desc: "BPE tokenizer, real-time pricing for OpenAI, Anthropic, Google and more. Context window usage.",
+    route: "codestudio",
+    tags: ["tokens", "ai", "cost"],
   },
   {
     id: "tokenlens",

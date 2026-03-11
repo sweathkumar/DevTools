@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import TimeKitEnterprise from '../Pages/TimeKitEnterprise.jsx'
 import CSVStudio from '../Pages/CSVStudio.jsx'
+import CodeStudio from '../Pages/CodeStudio.jsx'
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
@@ -11,6 +12,7 @@ createRoot(document.getElementById('root')).render(
       <Route path="/" element={<App />} />
       <Route path="/timekit" element={<TimeKitEnterprise />} />
       <Route path="/csvstudio" element={<CSVStudio />} />
+      <Route path="/codestudio" element={<CodeStudio />} />
     </Routes>
   </BrowserRouter>
 )
