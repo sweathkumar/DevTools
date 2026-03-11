@@ -20,6 +20,7 @@ const TOOLS = [
     category: "Data",
     tagline: "View, edit and export any CSV file",
     desc: "Sort, filter, edit cells, reorder columns, column statistics, find & replace, export to JSON.",
+    route: "csvstudio", 
     tags: ["csv", "table", "editor"],
   },
   {
@@ -216,7 +217,7 @@ function App() {
         borderBottom: `1px solid ${scrolled ? D.line : "transparent"}`,
         height: 52,
         display: "flex", alignItems: "center",
-        padding: "0 10rem",
+        padding: "0 1rem",
         transition: "border-color .2s, background .2s",
       }}>
         {/* Logo */}
@@ -319,7 +320,7 @@ function App() {
         {/* Stat bar */}
         <div style={{ display: "flex", gap: 0, borderTop: `1px solid ${D.line}`, animation: "up .5s .24s both" }}>
           {[["4", "Live tools"], ["31", "AI models"], ["0", "Sign-ins"], ["100%", "Private"]].map(([v, l], i) => (
-            <div key={l} style={{ flex: 1, padding: "20px 0", borderRight: i < 3 ? `1px solid ${D.line}` : "none", paddingLeft: i === 0 ? 0 : 20 }}>
+            <div key={l} style={{ flex: 1, padding: "20px 0", borderRight: i < 3 ? `1px solid ${D.line}` : "none", paddingLeft: i === 0 ? 0 : 0 }}>
               <div style={{ fontSize: 26, fontWeight: 900, color: D.text, fontFamily: mono, letterSpacing: "-1px", lineHeight: 1 }}>{v}</div>
               <div style={{ fontSize: 10, color: D.muted, marginTop: 5, fontWeight: 600, textTransform: "uppercase", letterSpacing: 1 }}>{l}</div>
             </div>
@@ -385,7 +386,7 @@ function App() {
         <div style={{ maxWidth: 960, margin: "0 auto", padding: "36px 24px", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 40 }}>
 
           {/* Brand */}
-          <div>
+          <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "start" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
               <div style={{ width: 22, height: 22, background: D.text, display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={D.bg} strokeWidth="2.5" strokeLinecap="round">
@@ -394,7 +395,7 @@ function App() {
               </div>
               <span style={{ fontSize: 13, fontWeight: 800, color: D.text, letterSpacing: "-.2px" }}>DevPocket Hub</span>
             </div>
-            <p style={{ fontSize: 12, color: D.sub, lineHeight: 1.75, margin: "0 0 16px" }}>
+            <p style={{ fontSize: 12, color: D.sub, lineHeight: 1.75, margin: "0 0 16px", textAlign: "start" }}>
               Developer tools that respect your privacy. Free, fast, and open.
             </p>
             <a href="https://sweathkumar.com" target="_blank" rel="noopener noreferrer"
@@ -409,11 +410,13 @@ function App() {
           <div>
             <div style={{ fontSize: 10, fontWeight: 700, color: D.muted, textTransform: "uppercase", letterSpacing: 1.5, marginBottom: 14 }}>Tools</div>
             {TOOLS.map(t => (
-              <div key={t.id} style={{ display: "flex", alignItems: "center", gap: 8, padding: "5px 0", cursor: "pointer" }}
+              <div key={t.id} style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, padding: "5px 0", cursor: "pointer" }}
                 onMouseEnter={e => e.currentTarget.querySelector("span").style.color = D.text}
                 onMouseLeave={e => e.currentTarget.querySelector("span").style.color = D.sub}>
-                <div style={{ width: 4, height: 4, background: D.muted, flexShrink: 0 }} />
-                <span style={{ fontSize: 12, color: D.sub, transition: "color .13s" }}>{t.name}</span>
+                {/* <div style={{ width: 4, height: 4, background: D.muted, flexShrink: 0 }} /> */}
+                <Link to={`/${t.route}`} style={{ textDecoration: 'none' }}>
+                  <span style={{ fontSize: 12, color: D.sub, transition: "color .13s" }}>{t.name}</span>
+                </Link>
               </div>
             ))}
           </div>
